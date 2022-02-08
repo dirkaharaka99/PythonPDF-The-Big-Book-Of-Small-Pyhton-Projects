@@ -17,22 +17,22 @@ def main():
         print("You have {} guesses to get it.".format(MAX_GUESSES))
 
         numGuesses = 1
-    while numGuesses <= MAX_GUESSES:
-        guess = ''
-        #Keep looping untul they enter a valid guess:
-        while len(guess) != NUM_DIGITS or not guess.isdecimal():
-            print('Guess #{}:'.format(numGuesses))
-            guess = input('> ')
+        while numGuesses <= MAX_GUESSES:
+            guess = ''
+            #Keep looping untul they enter a valid guess:
+            while len(guess) != NUM_DIGITS or not guess.isdecimal():
+                print('Guess #{}:'.format(numGuesses))
+                guess = input('> ')
 
-        clues = getClues(guess, secretNum)
-        print(clues)
-        numGuesses += 1
+            clues = getClues(guess, secretNum)
+            print(clues)
+            numGuesses += 1
 
-        if guess == secretNum:
-            break #They're correct, so break out of this loop
-        if numGuesses > MAX_GUESSES:
-            print('You ran out of guesses')
-            print('The answer was {}.'.format(secretNum))
+            if guess == secretNum:
+                break #They're correct, so break out of this loop
+            if numGuesses > MAX_GUESSES:
+                print('You ran out of guesses')
+                print('The answer was {}.'.format(secretNum))
 
     # Ask Player if they want to play again
         print("Do you want to play again? (yes or no)")
@@ -52,7 +52,7 @@ def getSecretNum():
         secretNum += str(numbers[i])
         return secretNum
 
-def getClues():
+def getClues(guess, secretNum):
     """Returns a string with pico, fermi, bagels clues for a guess and secret number pair."""
     if guess == secretNum:
         return 'You got it'
